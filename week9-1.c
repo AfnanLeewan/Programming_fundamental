@@ -1,35 +1,37 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <stdlib.h> 
+#include<string.h>
 
 int main()
 {
-	FILE* fptr1, * fptr2;
-	char filename[100], c;
+	FILE* ptr1, * ptr2;
+	char file[100], str;
+
 	printf("From :\n");
-	scanf("%s", filename);
-	fptr1 = fopen(filename, "r");
-	if (fptr1 == NULL)
+	scanf("%s", file);
+	ptr1 = fopen(file, "r");
+	if (ptr1 == NULL)
 	{
-		printf("Cannot open file %s \n", filename);
+		printf("Cannot open file %s \n", file);
 		exit(0);
 	}
 	printf("TO:\n");
-	scanf("%s", filename);
-	fptr2 = fopen(filename, "w");
-	if (fptr2 == NULL)
+	scanf("%s", file);
+	ptr2 = fopen(file, "w");
+	if (ptr2 == NULL)
 	{
-		printf("Cannot open file %s \n", filename);
+		printf("Cannot open file %s \n", file);
 		exit(0);
 	}
-	c = fgetc(fptr1);
-	while (c != EOF)
+	str = fgetc(ptr1);
+	while (str != EOF)
 	{
-		fputc(c, fptr2);
-		c = fgetc(fptr1);
+		fputc(str, ptr2);
+		str = fgetc(ptr1);
 	}
 
-	fclose(fptr1);
-	fclose(fptr2);
+	fclose(ptr1);
+	fclose(ptr2);
 	return 0;
 }
